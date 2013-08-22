@@ -1,0 +1,20 @@
+option java_package = "com.neevtech.gpb";
+option java_outer_classname = "CollaborationRequestProtos";
+
+message CollaborationRequestProtoObject {
+  required string serviceRequestId = 1;   // Unique ID for collaboration request.
+  optional string indicator = 2;
+  optional string requester = 3;
+  optional string collaborationType = 4;
+  optional string collTechId = 5;
+  optional string collSubTechId = 6;
+  optional string collProbCode = 7;
+  optional string collCreateDate = 8;
+  optional string initiator = 9;
+  optional string collExtId = 10;
+  optional string collabOwner = 11;
+  optional int32 severity = 12; 
+  optional string breTransactionId = 13;
+  optional string skillId = 14;
+  optional string collaborationSubType = 15;
+}

@@ -1,0 +1,22 @@
+option java_package = "com.neevtech.gpb";
+option java_outer_classname = "CustomerProtos";
+
+message CustomerProtoObject {
+  optional string city = 1;
+  optional int32 classificationPoints = 2;
+  optional string country = 3;
+  required string customerId = 4;   // Unique ID for collaboration request.
+  optional string customerName = 5;
+  optional string customerType = 6;
+  optional string territory = 7;
+  optional int32 valuePoint = 8;
+  optional string classLabel = 9 [default = "NONE"];
+  optional bool cisco30 = 10;
+  optional bool relationship = 11;
+  optional bool differentiated = 12;
+  optional int32 contractValue = 13;
+  optional int32 loyaltyDuration = 14;
+  optional bool onCap = 15;
+  repeated string valueRulesFired = 16;
+  repeated int32 firedSet = 17;
+}
