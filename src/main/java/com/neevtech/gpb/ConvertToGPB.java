@@ -7,6 +7,7 @@ import java.util.Set;
 
 import com.neevtech.gpb.CollaborationRequestProtos.CollaborationRequestProtoObject;
 import com.neevtech.gpb.CustomerProtos.CustomerProtoObject;
+import com.neevtech.voldemort.ClientExample;
 
 class ConvertToGPB {
 	
@@ -28,10 +29,16 @@ class ConvertToGPB {
 		
 		FileOutputStream output = new FileOutputStream(className);
 	    try {
-	    	if (className.equals("CollaborationRequest"))
-		    	createGPBInstanceOfCollaborationRequest(objJava).writeTo(output);
-	        else
-	        	createGPBInstanceOfCustomer(objJava).writeTo(output);
+	    	if (className.equals("CollaborationRequest")) {
+	    		CollaborationRequestProtoObject gpbInstance = createGPBInstanceOfCollaborationRequest(objJava);
+	    		System.out.println("GPB instance of CollaborationRequest:\n"+gpbInstance.toByteString());
+	    		new ClientExample().storeProtobufIntoDB(gpbInstance.toByteString().toString());
+		    	gpbInstance.writeTo(output);
+	    	} else {
+	    		CustomerProtoObject gpbInstance = createGPBInstanceOfCustomer(objJava);
+	    		System.out.println("GPB instance of Customer:\n"+gpbInstance.toByteString());
+	        	gpbInstance.writeTo(output);
+	    	}
 	    } finally {
 	      output.close();
 	    }

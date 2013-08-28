@@ -13,5 +13,6 @@ public class ServerExample {
 						+ "/config/single_node_cluster/config");
 		VoldemortServer server = new VoldemortServer(config);
 		server.start();
+		System.out.println("Server started...");
 	}
 }
