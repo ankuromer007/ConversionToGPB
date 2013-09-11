@@ -31,12 +31,12 @@ class ConvertToGPB {
 	    try {
 	    	if (className.equals("CollaborationRequest")) {
 	    		CollaborationRequestProtoObject gpbInstance = createGPBInstanceOfCollaborationRequest(objJava);
-	    		System.out.println("GPB instance of CollaborationRequest:\n"+gpbInstance.toByteString());
-	    		new ClientExample().storeProtobufIntoDB(gpbInstance.toByteString().toString());
+	    		System.out.println("GPB instance of CollaborationRequest:\n\n"+gpbInstance);
+	    		new ClientExample().storeProtobufIntoDB(gpbInstance);
 		    	gpbInstance.writeTo(output);
 	    	} else {
 	    		CustomerProtoObject gpbInstance = createGPBInstanceOfCustomer(objJava);
-	    		System.out.println("GPB instance of Customer:\n"+gpbInstance.toByteString());
+	    		System.out.println("GPB instance of Customer:\n"+gpbInstance);
 	        	gpbInstance.writeTo(output);
 	    	}
 	    } finally {
@@ -54,6 +54,7 @@ class ConvertToGPB {
 		Object newObjJava = convertGPBToJava(objGPB, className);
 		
 		if (className.equals("CollaborationRequest")) {
+			System.out.println("Java instance of CollaborationRequest:\n");
 			CollaborationRequest javaInstance = (CollaborationRequest) newObjJava;
 			
 			System.out.println("ServiceRequestId: "+javaInstance.getServiceRequestId());
@@ -64,6 +65,7 @@ class ConvertToGPB {
 			System.out.println("Requester: "+javaInstance.getRequester());
 			System.out.println("Severity: "+javaInstance.getSeverity());
 	    } else {
+	    	System.out.println("Java instance of Customer:\n");
 	    	Customer javaInstance = (Customer) newObjJava;
 	    	
 	    	System.out.println("CustomerId: "+javaInstance.getCustomerId());
